@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import cover from "../assets/cover.jpg"; // Adjust the path if needed
 
@@ -12,38 +11,40 @@ const Admin = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex flex-col md:flex-row h-screen">
       {/* Sidebar */}
-      <div className="w-1/6 bg-purple-400 text-white p-4 flex flex-col">
-        <h2 className="text-3xl font-bold mb-4">Admin Panel</h2>
+      <div className="w-full md:w-1/6 bg-blue-200 text-white p-4 flex flex-col">
+        <h2 className="text-2xl text-green-700 md:text-3xl font-bold mb-4 text-center md:text-left">
+          Admin Panel
+        </h2>
         <ul>
           <li
-            className="mb-2 text-center bg-gray-700  hover:bg-green-500 p-2 rounded cursor-pointer"
+            className="mb-2 text-center bg-blue-700 hover:bg-blue-500 p-2 rounded cursor-pointer"
             onClick={() => navigate("/add-event")}
           >
             Add Programs
           </li>
           <li
-            className="mb-2 text-center bg-gray-700  hover:bg-green-500 p-2 rounded cursor-pointer"
+            className="mb-2 text-center bg-blue-700 hover:bg-blue-500 p-2 rounded cursor-pointer"
             onClick={() => navigate("/add-image")}
           >
             Add Gallery Images
           </li>
           <li
-            className="mb-2 text-center bg-gray-700  hover:bg-green-500 p-2 rounded cursor-pointer"
+            className="mb-2 text-center bg-blue-700 hover:bg-blue-500 p-2 rounded cursor-pointer"
             onClick={() => navigate("/add-notice")}
           >
             Add Notices
           </li>
           <li
-            className="mb-2 text-center bg-gray-700  hover:bg-green-500 p-2 rounded cursor-pointer"
+            className="mb-2 text-center bg-blue-700 hover:bg-blue-500 p-2 rounded cursor-pointer"
             onClick={() => navigate("/messages")}
           >
             Messages
           </li>
         </ul>
         <button
-          className="mt-auto px-4 bg-blue-500 text-white py-2 rounded-md"
+          className="mt-auto px-4 bg-red-500 hover:bg-red-600 text-white py-2 rounded-md w-full"
           onClick={logoutHandler}
         >
           Logout
@@ -60,8 +61,8 @@ const Admin = () => {
         />
 
         {/* Text Overlay */}
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-          <h1 className="text-yellow-600 text-6xl font-bold">
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center ">
+          <h1 className=" text-yellow-600 text-4xl md:text-6xl font-bold  text-center">
             Nepal Ram Gram Foundation
           </h1>
         </div>

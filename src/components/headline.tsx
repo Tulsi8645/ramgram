@@ -62,9 +62,9 @@ const NewsScroller: React.FC = () => {
   }
 
   return (
-    <div className="w-full bg-gray-100 py-2 overflow-hidden flex items-center relative">
-      <div className="flex-shrink-0 bg-white text-white font-bold text-lg px-4 py-2 rounded-md z-10 flex items-center">
-        <img src={noticeIcon} alt="Notice Icon" className="w-9 h-9" />
+    <div className="w-full  py-2 overflow-hidden flex items-center relative">
+      <div className="flex-shrink-0 bg-white text-white font-bold text-lg px-4 py-1 rounded-md z-10 flex items-center">
+        <img src={noticeIcon} alt="Notice Icon" className="w-8 h-8" />
       </div>
       <div
         ref={scrollerRef}
