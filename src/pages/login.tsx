@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Card } from "../components/ui/card";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 interface LoginFormData {
   email: string;
@@ -16,6 +17,8 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -59,7 +62,7 @@ const Login: React.FC = () => {
         localStorage.setItem("token", data.token);
         setSuccess(data.message);
         setFormData({ email: "", password: "" });
-        window.location.href = "/admin";
+        navigate("/admin"); // Use navigate to redirect to /admin
       } else {
         setError(data.message || "Login failed. Please try again.");
       }
