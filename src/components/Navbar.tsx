@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className="w-20 h-10 rounded-md bg-blue-400 text-white text-2xl font-bold flex items-center justify-center">
               NRGF
             </div>
-            <span className="ml-2 text-md">Nepal Ram Gram Foundation</span>
+            <span className="hidden md:ml-2 md:text-md">Nepal Ram Gram Foundation</span>
           </div>
 
           <div className="hidden md:block">
