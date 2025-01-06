@@ -77,9 +77,8 @@ const EventDetails: React.FC = () => {
             alt={event.title}
             className="h-85  w-full object-cover  rounded-md"
           />
-          <h1 className="text-3xl font-bold mt-4">{event.title}</h1>
+          <h1 className="text-2xl font-bold mt-4">{event.title}</h1>
           <p className="text-blue-800 text-right mt-2">
-            <span className="font-semibold text-black">Category: </span>
             {event.category}
           </p>
           <div

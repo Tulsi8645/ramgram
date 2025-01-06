@@ -23,7 +23,9 @@ const Navbar = () => {
             <div className="w-20 h-10 rounded-md bg-blue-400 text-white text-2xl font-bold flex items-center justify-center">
               NRGF
             </div>
-            <span className="hidden md:ml-2 md:text-md">Nepal Ram Gram Foundation</span>
+            <span className="hidden md:block md:ml-2 md:text-md">
+              Nepal Ram Gram Foundation
+            </span>
           </div>
 
           <div className="hidden md:block">
@@ -36,7 +38,7 @@ const Navbar = () => {
                     location.pathname === item.path
                       ? item.name === "Donate"
                         ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 underline underline-offset-4"
-                        : "underline underline-offset-4 text-blue-600 font-bold"
+                        : " text-blue-600 font-bold"
                       : item.name === "Donate"
                       ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
                       : "hover:bg-blue-600"
@@ -71,7 +73,7 @@ const Navbar = () => {
                   location.pathname === item.path
                     ? item.name === "Donate"
                       ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 underline underline-offset-4"
-                      : "underline underline-offset-4 text-blue-600 font-bold"
+                      : " text-blue-600 font-bold"
                     : item.name === "Donate"
                     ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
                     : "hover:bg-blue-600"
