@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Event {
-  id: number; // Added ID field
+  id: number;
   title: string;
   category: string;
   details: string;
@@ -12,6 +12,7 @@ interface Event {
 const Event: React.FC = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
   const navigate = useNavigate();
 
   const webAppUrl =
@@ -29,10 +30,9 @@ const Event: React.FC = () => {
         });
         const result = await response.json();
         if (result.status === "success") {
-          // Add row number as ID
           const eventsWithId = result.data.map((event: any, index: number) => ({
             ...event,
-            id: index + 2, // Use row index as unique ID
+            id: index + 2,
           }));
           setEvents(eventsWithId.reverse());
         } else {
@@ -41,15 +41,17 @@ const Event: React.FC = () => {
       } catch (err: any) {
         console.error("Error:", err);
         setError("An error occurred while fetching events.");
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
     fetchEvents();
   }, []);
 
- const handleCardClick = (id: number) => {
-   navigate(`/event-details/${id}`); // Navigate using the dynamic segment
- };
+  const handleCardClick = (id: number) => {
+    navigate(`/event-details/${id}`); // Navigate using the dynamic segment
+  };
 
   return (
     <div className="bg-gray-50 py-10">
@@ -60,7 +62,17 @@ const Event: React.FC = () => {
         {error && (
           <p className="text-center text-red-500 font-semibold">{error}</p>
         )}
-        {events.length > 0 ? (
+        {loading ? (
+          // Loading Animation
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="flex flex-col items-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75"></div>
+              <p className="mt-4 text-blue-700 text-lg font-semibold">
+                Loading programs and events...
+              </p>
+            </div>
+          </div>
+        ) : events.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {events.map((event) => (
               <div
@@ -86,7 +98,7 @@ const Event: React.FC = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center h-96">
-            <p className="text-gray-500 text-lg">searching for events and programs...</p>
+            <p className="text-gray-500 text-lg">No events found.</p>
           </div>
         )}
       </div>

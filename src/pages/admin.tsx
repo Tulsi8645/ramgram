@@ -62,7 +62,7 @@ const Admin = () => {
 
         {/* Text Overlay */}
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center ">
-          <h1 className=" text-yellow-600 text-4xl md:text-6xl font-bold  text-center">
+          <h1 className=" text-yellow-500 text-4xl md:text-6xl font-bold  text-center">
             Nepal Ram Gram Foundation
           </h1>
         </div>

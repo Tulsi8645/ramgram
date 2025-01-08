@@ -20,12 +20,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center text-blue-900 text-2xl">
-            <div className="w-20 h-10 rounded-md bg-blue-400 text-white text-2xl font-bold flex items-center justify-center">
-              NRGF
-            </div>
-            <span className="hidden md:block md:ml-2 md:text-md">
-              Nepal Ram Gram Foundation
-            </span>
+            <Link to="/" className="flex items-center">
+              <div className="w-20 h-10 rounded-md bg-blue-400 text-white text-2xl font-bold flex items-center justify-center">
+                NRGF
+              </div>
+              <span className="hidden md:block md:ml-2 md:text-md">
+                Nepal Ram Gram Foundation
+              </span>
+            </Link>
           </div>
 
           <div className="hidden md:block">
@@ -37,7 +39,7 @@ const Navbar = () => {
                   className={`px-3 py-2 rounded-md ${
                     location.pathname === item.path
                       ? item.name === "Donate"
-                        ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 underline underline-offset-4"
+                        ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
                         : " text-blue-600 font-bold"
                       : item.name === "Donate"
                       ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"

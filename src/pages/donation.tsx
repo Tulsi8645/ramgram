@@ -1,11 +1,7 @@
-
-import DonationSection from '../components/donation/DonationSection'
+import DonationSection from "../components/donation/DonationSection";
 
 const Donation = () => {
-  return (
-      <DonationSection/>
-    
-  )
-}
+  return <DonationSection />;
+};
 
-export default Donation
+export default Donation;

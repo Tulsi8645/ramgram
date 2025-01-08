@@ -1,6 +1,5 @@
-import ContactSection from "../components/contact/ContactSection"
-import MapSection from "../components/map/MapSection"
-
+import ContactSection from "../components/contact/ContactSection";
+import MapSection from "../components/map/MapSection";
 
 const Contact = () => {
   return (
@@ -9,6 +8,6 @@ const Contact = () => {
       <MapSection />
     </>
   );
-}
+};
 
-export default Contact
+export default Contact;

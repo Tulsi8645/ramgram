@@ -21,8 +21,6 @@ import UploadImage from "./pages/addgalleryimages";
 import AddNotice from "./pages/notices";
 import PrivateRoute from "./components/PrivateRoute";
 
-
-
 function App() {
   return (
     <BrowserRouter>

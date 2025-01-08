@@ -13,17 +13,15 @@ const EventDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get event ID from URL
   const [event, setEvent] = useState<Event | null>(null); // Store event data
   const [error, setError] = useState<string | null>(null); // Store error message
+  const [loading, setLoading] = useState<boolean>(true); // Loading state
   const webAppUrl =
     "https://script.google.com/macros/s/AKfycbyOo5zlZGCuxPRAvLFZKyj3460z9JWz_WEuX5Ui2xjmm3b8b0z0uMrAVk4jdcxV1PqQ/exec";
 
-  console.log("Event ID from URL:", id);
-
   useEffect(() => {
     const fetchEventDetails = async () => {
-      console.log("Fetching event details...");
-
       if (!id) {
         setError("Event ID is missing.");
+        setLoading(false);
         return;
       }
 
@@ -42,7 +40,6 @@ const EventDetails: React.FC = () => {
         }
 
         const result = await response.json();
-        console.log("Fetched data:", result);
 
         if (result.status === "success") {
           const selectedEvent = result.data.find(
@@ -50,7 +47,6 @@ const EventDetails: React.FC = () => {
           );
 
           if (selectedEvent) {
-            console.log("Selected Event:", selectedEvent);
             setEvent(selectedEvent);
           } else {
             setError("Event not found.");
@@ -61,6 +57,8 @@ const EventDetails: React.FC = () => {
       } catch (err) {
         console.error("Error:", err);
         setError("An error occurred while fetching event details.");
+      } finally {
+        setLoading(false); // Stop loading
       }
     };
 
@@ -69,25 +67,34 @@ const EventDetails: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-10">
-      {error && <p className="text-red-500">{error}</p>}
-      {event ? (
+      {loading ? (
+        // Loading Animation
+        <div className="flex justify-center items-center min-h-screen">
+          <div className="flex flex-col items-center">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75"></div>
+            <p className="mt-4 text-blue-700 text-lg font-semibold">
+              Loading event details...
+            </p>
+          </div>
+        </div>
+      ) : error ? (
+        <p className="text-red-500 text-center">{error}</p>
+      ) : event ? (
         <div className="bg-white rounded-lg shadow-md p-6">
           <img
             src={event.image}
             alt={event.title}
-            className="h-85  w-full object-cover  rounded-md"
+            className="h-85 w-full object-cover rounded-md"
           />
           <h1 className="text-2xl font-bold mt-4">{event.title}</h1>
-          <p className="text-blue-800 text-right mt-2">
-            {event.category}
-          </p>
+          <p className="text-blue-800 text-right mt-2">{event.category}</p>
           <div
             className="mt-4 text-gray-600"
             dangerouslySetInnerHTML={{ __html: event.details }}
           ></div>
         </div>
       ) : (
-        <p className="text-gray-500 text-center">Loading event details...</p>
+        <p className="text-gray-500 text-center">Event not found.</p>
       )}
     </div>
   );

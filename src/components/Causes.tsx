@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const causes = [
   {
@@ -33,30 +34,48 @@ const causes = [
 const Causes = () => {
   return (
     <div className="py-16" id="causes">
-      <div className="max-w-7xl  hover:shadow-gray-300 hover:popup mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl hover:shadow-gray-300 hover:popup mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold text-center mb-12">
           Our <span className="text-blue-700">Causes</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {causes.map((cause, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
+            <div
+              key={index}
+              className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition"
+            >
               <div className="relative h-48">
-                <img 
-                  src={cause.image} 
-                  alt={cause.title} 
+                <img
+                  src={cause.image}
+                  alt={cause.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-blue-900/30"></div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-3 text-blue-700">{cause.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-blue-700">
+                  {cause.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{cause.description}</p>
-                <button className="text-yellow-500 font-semibold hover:text-yellow-600 flex items-center">
+                <Link
+                  to="/donate"
+                  className="text-yellow-500 font-semibold hover:text-yellow-600 flex items-center"
+                >
                   Support this cause
-                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
           ))}
