@@ -12,9 +12,10 @@ const initialFormData: ContactFormData = {
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
   const [message, setMessage] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // Add loading state
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbzFl7BmC2lgTv_VAtJ_GLx9pgThR2yZHtWY0x4NjdXKjBdcGCyT01qZFY_k4X0m0j5-/exec"; // Replace with your actual Web App URL
+    "https://script.google.com/macros/s/AKfycbxGB9pX2kdKcsJgLaUPYv_S0uCPiJ8S328qzjRp-Kxu5MC5MOzGGmHawY3a2f2kmSgLsA/exec"; // Replace with your actual Web App URL
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -28,6 +29,8 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsSubmitting(true); // Set submitting state to true
 
     const formDataObj = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -51,6 +54,8 @@ const ContactForm: React.FC = () => {
     } catch (error) {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false); // Set submitting state to false after request is complete
     }
   };
 
@@ -155,9 +160,12 @@ const ContactForm: React.FC = () => {
       <div>
         <button
           type="submit"
-          className="w-full bg-blue-700 text-white py-3 px-6 rounded-md hover:bg-blue-800 transition-colors font-semibold"
+          className={`w-full bg-blue-700 text-white py-3 px-6 rounded-md hover:bg-blue-800 transition-colors font-semibold ${
+            isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+          disabled={isSubmitting} // Disable button while submitting
         >
-          Send Message
+          {isSubmitting ? "Sending message..." : "Send Message"}
         </button>
       </div>
 

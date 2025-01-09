@@ -50,7 +50,7 @@ const Login: React.FC = () => {
 
     try {
       const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbx0tuTx4Xt7tFOCAo4Wg4UxnBUhlEEP4ocyfNV7oToH4-Op13w79Apj9QsXazC_T4Tu2w/exec",
+        "https://script.google.com/macros/s/AKfycbyPVcSiAV6qhC0IYcHdrkhKt3ThFGITNx37YroUhkEqLlkiQBsH8Z1BjUyAvWslVMDT/exec",
         {
           method: "POST",
           body: formDataObj,

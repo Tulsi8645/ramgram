@@ -13,7 +13,7 @@ const ViewContacts: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbzFl7BmC2lgTv_VAtJ_GLx9pgThR2yZHtWY0x4NjdXKjBdcGCyT01qZFY_k4X0m0j5-/exec"; // Replace with your actual Web App URL
+    "https://script.google.com/macros/s/AKfycbxGB9pX2kdKcsJgLaUPYv_S0uCPiJ8S328qzjRp-Kxu5MC5MOzGGmHawY3a2f2kmSgLsA/exec"; // Replace with your actual Web App URL
 
   const fetchAllContacts = async () => {
     const fetchData = new FormData();

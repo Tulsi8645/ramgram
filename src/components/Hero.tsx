@@ -18,7 +18,7 @@ const Hero = () => {
   const [error, setError] = useState<string | null>(null);
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbxwJ9WPzvlfxvV_1hlAEOu0se6nWykT1gSgmKlkRmITx5dZaMjiAHwtJokfvealsOc/exec"; // Replace with your actual Web App URL
+    "https://script.google.com/macros/s/AKfycbzF-9IW3zZ943M8DatpYmUFBb4UJumU5TOVE2mZqqvb6-ENj-ZdBPqKDkNTLJf8rX9whA/exec"; // Replace with your actual Web App URL
 
   const fetchNotices = async () => {
     const fetchData = new FormData();

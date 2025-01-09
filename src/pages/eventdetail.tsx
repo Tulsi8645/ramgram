@@ -15,7 +15,7 @@ const EventDetails: React.FC = () => {
   const [error, setError] = useState<string | null>(null); // Store error message
   const [loading, setLoading] = useState<boolean>(true); // Loading state
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbyOo5zlZGCuxPRAvLFZKyj3460z9JWz_WEuX5Ui2xjmm3b8b0z0uMrAVk4jdcxV1PqQ/exec";
+    "https://script.google.com/macros/s/AKfycbxCNSeqkQWwmUBRW7fNc8eUhEigOqV4Tfygwu_ztx70xjP1m9PUSyitokkESGblerYH/exec";
 
   useEffect(() => {
     const fetchEventDetails = async () => {
@@ -80,11 +80,11 @@ const EventDetails: React.FC = () => {
       ) : error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : event ? (
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <div className="bg-white rounded-lg shadow-md p-2">
           <img
             src={event.image}
             alt={event.title}
-            className="h-85 w-full object-cover rounded-md"
+            className="h-68 w-full object-cover rounded-md"
           />
           <h1 className="text-2xl font-bold mt-4">{event.title}</h1>
           <p className="text-blue-800 text-right mt-2">{event.category}</p>

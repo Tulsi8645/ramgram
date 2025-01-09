@@ -16,7 +16,7 @@ const Event: React.FC = () => {
   const navigate = useNavigate();
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbyOo5zlZGCuxPRAvLFZKyj3460z9JWz_WEuX5Ui2xjmm3b8b0z0uMrAVk4jdcxV1PqQ/exec";
+    "https://script.google.com/macros/s/AKfycbxCNSeqkQWwmUBRW7fNc8eUhEigOqV4Tfygwu_ztx70xjP1m9PUSyitokkESGblerYH/exec";
 
   useEffect(() => {
     const fetchEvents = async () => {

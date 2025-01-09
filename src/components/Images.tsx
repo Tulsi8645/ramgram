@@ -10,7 +10,7 @@ const ImageGallery: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true); // Add loading state
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbx7qPxJxQZ6-TAMC06lQMR5SsRxohPjcXVsZOtczz0ruLXpxilylHTFPu2iADNzX5HM/exec"; // Replace with your actual Google Apps Script URL
+    "https://script.google.com/macros/s/AKfycbzTKp76nsaKQ6FsqCro8-Hda_du3Q1L5wVrnzpzKu7B9rtHCuheuj3KBgmq-r9MLnNIHQ/exec"; // Replace with your actual Google Apps Script URL
 
   const fetchAllImages = async () => {
     const fetchData = new FormData();

@@ -9,7 +9,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import AboutPage from "./pages/about";
 import Admin from "./pages/admin";
-import AddEditEvent from "./pages/addevent";
 import Events from "./pages/events";
 import EventDetails from "./pages/eventdetail";
 import Gallery from "./pages/gallery";
@@ -20,6 +19,7 @@ import ViewContacts from "./pages/contacts";
 import UploadImage from "./pages/addgalleryimages";
 import AddNotice from "./pages/notices";
 import PrivateRoute from "./components/PrivateRoute";
+import AddEvent from "./pages/addevent";
 
 function App() {
   return (
@@ -49,7 +49,7 @@ function App() {
             path="/add-event"
             element={
               <PrivateRoute>
-                <AddEditEvent />
+                <AddEvent />
               </PrivateRoute>
             }
           />

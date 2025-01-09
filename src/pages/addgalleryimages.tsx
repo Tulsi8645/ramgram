@@ -6,17 +6,15 @@ const UploadImage: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false); // New state for submission status
 
-  // Cloudinary setup
   const cloudinaryUrl =
-    "https://api.cloudinary.com/v1_1/dxqt8usui/image/upload";
-  const uploadPreset = "ml_default"; // Replace with your Cloudinary upload preset
+    "https://api.cloudinary.com/v1_1/dvnphv6zv/image/upload";
+  const uploadPreset = "ml_default";
 
-  // WebApp URL (Google Apps Script URL)
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbx7qPxJxQZ6-TAMC06lQMR5SsRxohPjcXVsZOtczz0ruLXpxilylHTFPu2iADNzX5HM/exec"; // Replace with your actual Google Apps Script URL
+    "https://script.google.com/macros/s/AKfycbzTKp76nsaKQ6FsqCro8-Hda_du3Q1L5wVrnzpzKu7B9rtHCuheuj3KBgmq-r9MLnNIHQ/exec";
 
-  // Handle file change (upload to Cloudinary)
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -41,7 +39,6 @@ const UploadImage: React.FC = () => {
     }
   };
 
-  // Handle form submission (send image URL to Google Apps Script)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!image) {
@@ -50,13 +47,14 @@ const UploadImage: React.FC = () => {
     }
 
     const formData = new FormData();
-    formData.append("action", "submit"); // Action to indicate image submission
-    formData.append("image", image); // Send the Cloudinary image URL
+    formData.append("action", "submit");
+    formData.append("image", image);
 
     try {
+      setSubmitting(true); // Set submitting to true
       const response = await fetch(webAppUrl, {
         method: "POST",
-        body: formData, // Use FormData to submit
+        body: formData,
       });
       const result = await response.json();
 
@@ -68,6 +66,8 @@ const UploadImage: React.FC = () => {
     } catch (error) {
       console.error("Error adding image:", error);
       alert("Error adding image.");
+    } finally {
+      setSubmitting(false); // Reset submitting status
     }
   };
 
@@ -97,9 +97,9 @@ const UploadImage: React.FC = () => {
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
-            disabled={uploading || !image}
+            disabled={uploading || submitting || !image}
           >
-            Submit
+            {submitting ? "Submitting..." : "Submit"} {/* Conditional text */}
           </button>
         </div>
       </form>

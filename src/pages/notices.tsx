@@ -8,11 +8,12 @@ const AddNotice: React.FC = () => {
     description: "",
   });
   const [message, setMessage] = useState<string>("");
+  const [submitting, setSubmitting] = useState(false); // New state for submission status
   const quillRef = useRef<Quill | null>(null);
   const editorContainerRef = useRef<HTMLDivElement>(null);
 
   const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbxwJ9WPzvlfxvV_1hlAEOu0se6nWykT1gSgmKlkRmITx5dZaMjiAHwtJokfvealsOc/exec"; // Replace with your actual Web App URL
+    "https://script.google.com/macros/s/AKfycbzF-9IW3zZ943M8DatpYmUFBb4UJumU5TOVE2mZqqvb6-ENj-ZdBPqKDkNTLJf8rX9whA/exec"; // Replace with your actual Web App URL
 
   useEffect(() => {
     if (editorContainerRef.current && !quillRef.current) {
@@ -39,6 +40,8 @@ const AddNotice: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setSubmitting(true); // Set submitting to true when submission starts
+
     const formData = new FormData();
     formData.append("title", noticeData.title);
     formData.append("description", quillRef.current?.root.innerHTML || "");
@@ -61,6 +64,8 @@ const AddNotice: React.FC = () => {
     } catch (error) {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again later.");
+    } finally {
+      setSubmitting(false); // Reset submitting status after completion
     }
   };
 
@@ -94,13 +99,13 @@ const AddNotice: React.FC = () => {
         <button
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded"
+          disabled={submitting} // Disable button during submission
         >
-          Submit
+          {submitting ? "Submitting..." : "Submit"} {/* Conditional text */}
         </button>
       </form>
 
       {message && <p className="mt-4 text-green-500">{message}</p>}
-
     </div>
   );
 };
