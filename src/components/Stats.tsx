@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Users, School, Heart, Home } from 'lucide-react';
 
 const Stats = () => {

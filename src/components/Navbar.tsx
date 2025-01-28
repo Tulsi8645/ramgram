@@ -39,10 +39,10 @@ const Navbar = () => {
                   className={`px-3 py-2 rounded-md ${
                     location.pathname === item.path
                       ? item.name === "Donate"
-                        ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
+                        ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 blink"
                         : " text-blue-600 font-bold"
                       : item.name === "Donate"
-                      ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
+                      ? "bg-yellow-500  font-bold hover:bg-yellow-500 blink"
                       : "hover:bg-blue-600"
                   }`}
                 >
@@ -74,10 +74,10 @@ const Navbar = () => {
                 className={`block px-3 py-2 rounded-md ${
                   location.pathname === item.path
                     ? item.name === "Donate"
-                      ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 underline underline-offset-4"
+                      ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500 blink "
                       : " text-blue-600 font-bold"
                     : item.name === "Donate"
-                    ? "bg-yellow-400 text-blue-900 font-bold hover:bg-yellow-500"
+                    ? "bg-yellow-500  font-bold hover:bg-yellow-500 blink"
                     : "hover:bg-blue-600"
                 }`}
                 onClick={() => setIsOpen(false)} // Close menu on item click
@@ -88,6 +88,21 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
+      {/* Add global styles for the blinking effect */}
+      <style>{`
+        @keyframes blink {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.6;
+          }
+        }
+        .blink {
+          animation: blink 1s infinite;
+        }
+      `}</style>
     </nav>
   );
 };

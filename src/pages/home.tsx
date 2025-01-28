@@ -6,13 +6,14 @@ import NewsScroller from "../components/headline";
 import Stats from "../components/Stats";
 import Event from "./events";
 import MapSection from "../components/map/MapSection";
+import WhoWeAre from "../components/WhoweAre";
 
 const Home = () => {
   return (
     <>
       <NewsScroller />
       <Hero />
-
+      <WhoWeAre/>
       <AboutSection />
       <Causes />
       <Stats />
